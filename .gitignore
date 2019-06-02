@@ -1,3 +1,9 @@
 ENV
 *.sqlites
 __pycache__
+.vscode/
+node_modules/
+terraform/.terraform/
+terraform/hitmebaby.json
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
