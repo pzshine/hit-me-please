@@ -7,12 +7,16 @@ jobs:
     steps:
       - setup_remote_docker
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "b6:67:e0:6d:d1:4e:f0:63:89:78:49:55:a1:fe:02:a6"
       - run:
           name: install dependencies
           command: |
             python3 -m venv ENV
             . ENV/bin/activate
             pip install -r requirements.txt
+            pin install ansible
       - run:
           name: run unit tests
           command: |
@@ -24,4 +28,13 @@ jobs:
             docker build -t prontoshine/hitme:live .
             docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
             docker push prontoshine/hitme:live
+      
+      - run:
+          name: deploy
+          command: |
+          . ENV/bin/activate
+          cd ansible
+          ansible-playbook -i hosts deploy.yml --extra-vars "project_path=~/hitme/ username=s.sutheeravet"
+        
+
 
