@@ -32,9 +32,9 @@ jobs:
       - run:
           name: deploy
           command: |
-          . ENV/bin/activate
-          cd ansible
-          ansible-playbook -i hosts deploy.yml --extra-vars "project_path=~/hitme/ username=s.sutheeravet"
-        
+            . ENV/bin/activate
+            cd ansible
+            ansible-playbook -i hosts deploy.yml --extra-vars "project_path=~/hitme username=s.sutheeravet"
+          
 
 
