@@ -11,23 +11,23 @@ resource "google_compute_instance" "tf_instance" {
   count        = 1
   boot_disk {
     initialize_params {
-	    image = "ubuntu-1804-bionic-v20190530"
-			size  = 30
-		}
-	}
+        image = "ubuntu-1804-bionic-v20190530"
+        size  = 30
+    }
+  }
 
-	metadata = {
-		sshKeys = "s.sutheeravet:${file("~/.ssh/id_rsa.pub")}"
-	}
+  metadata = {
+    sshKeys = "s.sutheeravet:${file("~/.ssh/id_rsa.pub")}"
+  }
 
-	network_interface {
-		network       = "default"
-		access_config {}
-	}
+  network_interface {
+    network       = "default"
+      access_config {}
+  }
 
-	tags = ["my-web"]
+  tags = ["my-web"]
 }
 
 output "ip" {
-	value = "${google_compute_instance.tf_instance.*.network_interface.0.access_config.0.nat_ip}"
+  value = "${google_compute_instance.tf_instance.*.network_interface.0.access_config.0.nat_ip}"
 }
