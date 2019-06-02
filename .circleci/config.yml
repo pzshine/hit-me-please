@@ -21,7 +21,7 @@ jobs:
       - run:
           name: build image and push image
           command: |
-            docker build -t prontoshine/hitme:live
+            docker build -t prontoshine/hitme:live .
             docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
             docker push prontoshine/hitme:live
 
