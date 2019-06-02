@@ -16,7 +16,7 @@ jobs:
             python3 -m venv ENV
             . ENV/bin/activate
             pip install -r requirements.txt
-            pin install ansible
+            pip install ansible
       - run:
           name: run unit tests
           command: |
