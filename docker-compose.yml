@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   app:
-    image: prontoshine/hitme:v2
+    image: prontoshine/hitme:live
     ports:
       - 80:8000
 
